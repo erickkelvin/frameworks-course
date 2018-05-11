@@ -9,17 +9,7 @@ Pre-requisites:
   * NodeJS
   * MongoDB
 
-1. Clone the repository
-   * SSH
-    
-       ```bash
-       git clone git@github.com:erickkelvin/frameworks-course.git
-       ```
-   * HTTPS
-    
-       ```bash
-       git clone https://github.com/erickkelvin/frameworks-course.git
-       ```
+1. Clone the repository or download (and extract) ZIP file
 
 2. Install dependencies
  
