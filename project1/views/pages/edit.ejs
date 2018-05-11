@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+
+<div>
+  <form action="/update/<%= data.id %>" method="post">
+
+    Nome: <input type="text" name="name" value="<%= data.name %>" />
+    <br />
+    PIB: <input type="text" name="pib" value="<%= data.pib %>" />
+    <br />
+    Habitantes: <input type="text" name="population" value="<%= data.population %>" />
+    <br />
+    <input type="submit" value="Salvar" />
+  </form>
+</div>
+<br>
+<div><a href='/'>Ver todos</a></div>
+
+<% include ../partials/footer %>

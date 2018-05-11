@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+
+<div>
+    <% for (var i in data) { %>
+      <a href='/show/<%= data[i].id %>'><%= data[i].name%></a>
+      <a href='/edit/<%= data[i].id %>'>Alterar</a>
+      <a href='/delete/<%= data[i].id %>'>Excluir</a>
+      <br />
+    <% } %>
+    <br>
+    <div><a href='/new'>Adicionar estado</a></div>
+</div>
+
+<% include ../partials/footer %>
