@@ -2,7 +2,7 @@
 
 First project for the Software Frameworks course at UFC. A simple application using different frameworks for showing and manipulating data of Brazilian states.
 
-## Setup
+## Setting up
 
 Pre-requisites:
   * NPM
@@ -35,7 +35,7 @@ Pre-requisites:
     mongod --dbpath data
     ```
     
-## Run
+## Running
 
 1. Start application
  
