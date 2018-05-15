@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Statum - Home</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="../public/stylesheets/home.css">
+        <!-- Google Charts -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid outer">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="home.html">Statum</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="top-navbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a id="graphs" href="home.html">Gráficos</a></li>
+                            <li><a id="states" href="#">Estados</a></li>
+                            <li><a id="log" href="#">Histórico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row content">
+                <div class="col-md-3 param-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <label class="param-titles">Parâmetros</label>
+                                <div class="radio">
+                                    <label><input type="radio" name="param-radio"> Estado X População</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="param-radio"> Estado X PIB</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="param-radio"> Estado X PIB X População</label>
+                                </div>
+                                <hr>
+                            <label class="param-titles">Estados</label>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Acre</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Alagoas</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Amapá</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Amazonas</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Bahia</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Ceará</label>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 arrow-div">
+                    <div class="triangle-left"></div>
+                </div>
+                <div class="col-md-7 graph-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body graph-div">
+                            <script>
+                                google.charts.load('current', {packages: ['corechart', 'bar']});
+                                google.charts.setOnLoadCallback(drawDualX);
+
+                                function drawDualX() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['City', '2010 Population', '2000 Population'],
+                                        ['New York City, NY', 8175000, 8008000],
+                                        ['Los Angeles, CA', 3792000, 3694000],
+                                        ['Chicago, IL', 2695000, 2896000],
+                                        ['Houston, TX', 2099000, 1953000],
+                                        ['Philadelphia, PA', 1526000, 1517000]
+                                    ]);
+
+                                    var materialOptions = {
+                                        chart: {
+                                            title: 'Population of Largest U.S. Cities',
+                                            subtitle: 'Based on most recent and previous census data'
+                                        },
+                                        hAxis: {
+                                            title: 'Total Population'
+                                        },
+                                        vAxis: {
+                                            title: 'City'
+                                        },
+                                        bars: 'horizontal',
+                                        series: {
+                                            0: {axis: '2010'},
+                                            1: {axis: '2000'}
+                                        },
+                                        axes: {
+                                        x: {
+                                            2010: {label: '2010 Population (in millions)', side: 'top'},
+                                            2000: {label: '2000 Population'}
+                                            }  
+                                        }
+                                    };
+                                    var materialChart = new google.charts.Bar(document.querySelector(".graph-div"));
+                                    materialChart.draw(data, materialOptions);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 arrow-div">
+                    <div class="triangle-right"></div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <label><strong>Created by: </strong>Erick Kelvin, Luiza Bomfim and Zedequias Ferreira</label>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>
