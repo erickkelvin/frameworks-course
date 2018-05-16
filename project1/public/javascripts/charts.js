@@ -1,40 +1,43 @@
 function ExPo(){
+    var dl = getStates();
     var dataF = new google.visualization.DataTable();
     dataF.addColumn('string','Estado');
     dataF.addColumn('number','População');
-    dataF.addRows(statesInfo.length);
+    dataF.addRows(dl.length);
 
-    for (var n = 0; n < statesInfo.length; n++) {
-        dataF.setValue(n, 0, statesInfo[n].name);
-        dataF.setValue(n, 1, statesInfo[n].population);
+    for (var n = 0; n < dl.length; n++) {
+        dataF.setValue(n, 0, dl[n].name);
+        dataF.setValue(n, 1, dl[n].population);
     }
     return dataF;
 }
 
 function ExPI(){
+    var dl = getStates();
     var dataF = new google.visualization.DataTable();
     dataF.addColumn('string','Estado');
     dataF.addColumn('number','PIB');
-    dataF.addRows(statesInfo.length);
+    dataF.addRows(dl.length);
 
-    for (var n = 0; n < statesInfo.length; n++) {
-        dataF.setValue(n, 0, statesInfo[n].name);
-        dataF.setValue(n, 1, statesInfo[n].pib);
+    for (var n = 0; n < dl.length; n++) {
+        dataF.setValue(n, 0, dl[n].name);
+        dataF.setValue(n, 1, dl[n].pib);
     }
     return dataF;
 }
 
 function ExPoxPI(){
+    var dl = getStates();
     var dataF = new google.visualization.DataTable();
     dataF.addColumn('string','Estado');
     dataF.addColumn('number','População');
     dataF.addColumn('number','PIB');
-    dataF.addRows(statesInfo.length);
+    dataF.addRows(dl.length);
 
-    for (var n = 0; n < statesInfo.length; n++) {
-        dataF.setValue(n, 0, statesInfo[n].name);
-        dataF.setValue(n, 1, statesInfo[n].population);
-        dataF.setValue(n, 2, statesInfo[n].pib);
+    for (var n = 0; n < dl.length; n++) {
+        dataF.setValue(n, 0, dl[n].name);
+        dataF.setValue(n, 1, dl[n].population);
+        dataF.setValue(n, 2, dl[n].pib);
     }
     return dataF;
 }
@@ -241,9 +244,30 @@ colAct.addEventListener("click", function(){
     getParams(3);
 });
 
-//console.log(larrow);
+function searchSt(idi){
+    for(var i = 0; i < statesInfo.length; i++){
+        if(statesInfo[i]._id == idi){
+            return statesInfo[i];
+        }
+    }
+}
 
-//barChart();
-//lineChart(2);
-//areaChart(2);
-//columnChart(2);
+var cb = document.querySelector("#states-cb");
+
+function getStates(){
+    var dataList = [];
+    for(var i = 0; i < cb.length; i++){
+        if(cb[i].checked){
+            var stt = searchSt(cb[i].value);
+            dataList.push(stt);
+        }
+    }
+    return dataList;
+}
+
+for(var i = 0; i < cb.length; i++){
+    cb[i].addEventListener("click", function() {
+        makeAct(ch);
+        getParams(ch);
+    });
+}
