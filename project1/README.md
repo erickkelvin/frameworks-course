@@ -18,19 +18,24 @@ Pre-requisites:
     npm install
     ```
 
-3. Set up MongoDB
+3. Create MongoDB directory
  
     ```bash
     mkdir data
-    mongod --dbpath data
     ```
     
 ## Running
 
-1. Start application
+1. Run MongoDB
+
+    ```bash
+    mongod --dbpath data
+    ```
+    
+2. Start application in a separate terminal window or tab
  
    ```bash
     npm start
    ```
    
-2. Open http://localhost:3000
+3. Open http://localhost:3000
