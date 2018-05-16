@@ -2,24 +2,41 @@
                         <ul class="nav navbar-nav">
                             <li><a id="graphs" href="/">Gráficos</a></li>
                             <li class="active"><a id="states" href="/list">Estados</a></li>
-                            <li><a id="log" href="#">Histórico</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-<div>
-  <form action="create" method="post">
-    Nome: <input type="text" name="name" value="" />
-    <br />
-    PIB: <input type="text" name="pib" value="" />
-    <br />
-    Habitantes: <input type="text" name="population" value="" />
-    <br />
-    <input type="submit" value="Salvar" />
-  </form>
-</div>
-<br>
-<div><a href='/list'>Ver todos</a></div>
+            <div class="content">
+                <div class="panel panel-default list-panel">
+                    <div class="row title-row">
+                        <h4>Adicionar Estado</h4>
+                    </div>
+                    <div class="row new-table">
+                        <form action="create" method="post">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Nome:</th>
+                                        <td><input type="text" name="name" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th>População:</th>
+                                        <td><input type="text" name="population" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th>PIB:</th>
+                                        <td><input type="text" name="pib" value="" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="submit" value="Salvar" class="btn btn-default save-btn" />
+                        </form>
+                    </div>
+                    <div class="back-btn">
+                        <a href='/list' class="back-btn"><span class="glyphicon glyphicon-chevron-left"></span>Voltar</a>
+                    </div>
+                </div>
+            </div>
 
 <% include ../partials/footer %>
