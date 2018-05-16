@@ -5,6 +5,16 @@ var state = require('../controllers/state_controller');
 router.get('/', function(req, res) {
   var result = state.list();
   result.then((doc) => {
+    res.render('pages/home', { title: 'Home', data: doc });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+
+router.get('/list', function(req, res) {
+  var result = state.list();
+  result.then((doc) => {
     res.render('pages/list', { title: 'PIB e População dos Estados Brasileiros', data: doc });
   })
   .catch((err) => {

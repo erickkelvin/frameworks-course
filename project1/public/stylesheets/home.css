@@ -43,3 +43,11 @@
 .triangle-right:hover {
     cursor: pointer;
 }
+
+#param-rds {
+    padding-left: 20px;
+}
+
+#param-rds input {
+    margin: 10px 0;
+}

@@ -1,11 +1,19 @@
 <% include ../partials/header %>
+                        <ul class="nav navbar-nav">
+                            <li><a id="graphs" href="/">Gráficos</a></li>
+                            <li class="active"><a id="states" href="/list">Estados</a></li>
+                            <li><a id="log" href="#">Histórico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
 <div>
     <% for (var i in data) { %>
-      <a href='/show/<%= data[i].id %>'><%= data[i].name%></a>
-      <a href='/edit/<%= data[i].id %>'>Alterar</a>
-      <a href='/delete/<%= data[i].id %>'>Excluir</a>
-      <br />
+        <a href='/show/<%= data[i].id %>'><%= data[i].name%></a>
+        <a href='/edit/<%= data[i].id %>'>Alterar</a>
+        <a href='/delete/<%= data[i].id %>'>Excluir</a>
+        <br />
     <% } %>
     <br>
     <div><a href='/new'>Adicionar estado</a></div>

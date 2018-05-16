@@ -1,4 +1,12 @@
 <% include ../partials/header %>
+                        <ul class="nav navbar-nav">
+                            <li><a id="graphs" href="/">Gráficos</a></li>
+                            <li class="active"><a id="states" href="/list">Estados</a></li>
+                            <li><a id="log" href="#">Histórico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
 <div>
   <form action="create" method="post">
@@ -12,6 +20,6 @@
   </form>
 </div>
 <br>
-<div><a href='/'>Ver todos</a></div>
+<div><a href='/list'>Ver todos</a></div>
 
 <% include ../partials/footer %>
