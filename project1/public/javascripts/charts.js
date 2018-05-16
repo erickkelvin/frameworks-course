@@ -225,23 +225,27 @@ function makeAct(chAct){
 }
 
 barAct.addEventListener("click", function(){
-    makeAct(0);
-    getParams(0);
+    ch = 0;
+    makeAct(ch);
+    getParams(ch);
 });
 
 lineAct.addEventListener("click", function(){
-    makeAct(1);
-    getParams(1);
+    ch = 1;
+    makeAct(ch);
+    getParams(ch);
 });
 
 areaAct.addEventListener("click", function(){
-    makeAct(2);
-    getParams(2);
+    ch = 2;
+    makeAct(ch);
+    getParams(ch);
 });
 
 colAct.addEventListener("click", function(){
-    makeAct(3);
-    getParams(3);
+    ch = 3;
+    makeAct(ch);
+    getParams(ch);
 });
 
 function searchSt(idi){
