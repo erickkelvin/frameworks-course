@@ -133,6 +133,9 @@ function columnChart(pr) {
         var options = {
             chart: {
                 title: 'Colunas'
+            },
+            bars: {
+                groupWidth: 10
             }
         };
 
@@ -173,9 +176,7 @@ larrow.addEventListener("click", function(){
     if(ch > 0){
         ch--;
         getParams(ch);
-    }
-    else{
-        getParams(ch);
+        makeAct(ch);
     }
 });
 
@@ -184,10 +185,60 @@ rarrow.addEventListener("click", function(){
     if(ch < 3){
         ch++;
         getParams(ch);
+        makeAct(ch);
     }
-    else{
-        getParams(ch);
+});
+
+var barAct = document.querySelector("#bar-label");
+var lineAct = document.querySelector("#line-label");
+var areaAct = document.querySelector("#area-label");
+var colAct = document.querySelector("#col-label");
+
+function makeAct(chAct){
+    if(chAct == 0 && !barAct.classList.contains("active")){
+        barAct.classList.add("active");
+        lineAct.classList.remove("active");
+        areaAct.classList.remove("active");
+        colAct.classList.remove("active");
     }
+    else if(chAct == 1 && !lineAct.classList.contains("active")){
+        barAct.classList.remove("active");
+        lineAct.classList.add("active");
+        areaAct.classList.remove("active");
+        colAct.classList.remove("active");
+    }
+    else if(chAct == 2 && !areaAct.classList.contains("active")){
+        barAct.classList.remove("active");
+        lineAct.classList.remove("active");
+        areaAct.classList.add("active");
+        colAct.classList.remove("active");
+    }
+    else if(chAct == 3 && !colAct.classList.contains("active")){
+        barAct.classList.remove("active");
+        lineAct.classList.remove("active");
+        areaAct.classList.remove("active");
+        colAct.classList.add("active");
+    }
+}
+
+barAct.addEventListener("click", function(){
+    makeAct(0);
+    getParams(0);
+});
+
+lineAct.addEventListener("click", function(){
+    makeAct(1);
+    getParams(1);
+});
+
+areaAct.addEventListener("click", function(){
+    makeAct(2);
+    getParams(2);
+});
+
+colAct.addEventListener("click", function(){
+    makeAct(3);
+    getParams(3);
 });
 
 //console.log(larrow);

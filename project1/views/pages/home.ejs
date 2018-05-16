@@ -2,7 +2,6 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a id="graphs" href="/">Gráficos</a></li>
                             <li><a id="states" href="/list">Estados</a></li>
-                            <li><a id="log" href="#">Histórico</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,18 +34,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 arrow-div">
+                <!--<div class="col-md-1 arrow-div">
                     <div class="triangle-left"></div>
-                </div>
-                <div class="col-md-7 graph-panel">
+                </div>-->
+                <div class="col-md-9 graph-panel">
                     <div class="panel panel-default">
-                        <div class="panel-body graph-div">
+                        <div class="row chart-types">
+                            <div class="col-sm-1 arrow-div">
+                                <div class="triangle-left"></div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div id="bar-label" class="col-sm-3 active">
+                                        <label>Barra</label>
+                                    </div>
+                                    <div id="line-label" class="col-sm-3">
+                                        <label>Linha</label>
+                                    </div>
+                                    <div id="area-label" class="col-sm-3">
+                                        <label>Área</label>
+                                    </div>
+                                    <div id="col-label" class="col-sm-3">
+                                        <label>Coluna</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 arrow-div">
+                                <div class="triangle-right"></div>
+                            </div>
+                        </div>
+                        <div class="row chart-row">
+                            <div class="panel-body graph-div">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 arrow-div">
+                <!--<div class="col-md-1 arrow-div">
                     <div class="triangle-right"></div>
-                </div>
+                </div>-->
             </div>
 
 <% include ../partials/footer %>
