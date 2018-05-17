@@ -63,7 +63,7 @@ function barChart(pr) {
             },
             bars: 'horizontal'
         };
-        var chart = new google.charts.Bar(document.querySelector(".graph-div"));
+        var chart = new google.charts.Bar(document.querySelector(".graph-div") || '');
         chart.draw(data, options);
     }
 }
@@ -148,16 +148,21 @@ function columnChart(pr) {
 }
 
 var ch = 0;
-barChart(0);
+if (document.querySelector(".graph-div")) {
+    barChart(0);
+}
 
 var rd = document.querySelector("#param-rds");
-rd.addEventListener("click",function(){
-    getParams(ch)
-});
+if (rd) {
+    rd.addEventListener("click",function(){
+        getParams(ch)
+    });
+}
+
 
 function getParams(ch){
     for(var i = 0; i < rd.length; i++){
-        if(rd[i].checked){
+        if(rd[i].checked && document.querySelector(".graph-div")){
             if(ch == 0){
                 barChart(rd[i].value);
             }
@@ -175,22 +180,27 @@ function getParams(ch){
 }
 
 var larrow = document.querySelector(".triangle-left");
-larrow.addEventListener("click", function(){
-    if(ch > 0){
-        ch--;
-        getParams(ch);
-        makeAct(ch);
-    }
-});
+if (larrow) {
+    larrow.addEventListener("click", function(){
+        if(ch > 0){
+            ch--;
+            getParams(ch);
+            makeAct(ch);
+        }
+    });
+}
+
 
 var rarrow = document.querySelector(".triangle-right");
-rarrow.addEventListener("click", function(){
-    if(ch < 3){
-        ch++;
-        getParams(ch);
-        makeAct(ch);
-    }
-});
+if (rarrow) {
+    rarrow.addEventListener("click", function(){
+        if(ch < 3){
+            ch++;
+            getParams(ch);
+            makeAct(ch);
+        }
+    });
+}
 
 var barAct = document.querySelector("#bar-label");
 var lineAct = document.querySelector("#line-label");
@@ -224,29 +234,32 @@ function makeAct(chAct){
     }
 }
 
-barAct.addEventListener("click", function(){
-    ch = 0;
-    makeAct(ch);
-    getParams(ch);
-});
+if (barAct && lineAct && areaAct && colAct) {
+    barAct.addEventListener("click", function(){
+        ch = 0;
+        makeAct(ch);
+        getParams(ch);
+    });
+    
+    lineAct.addEventListener("click", function(){
+        ch = 1;
+        makeAct(ch);
+        getParams(ch);
+    });
+    
+    areaAct.addEventListener("click", function(){
+        ch = 2;
+        makeAct(ch);
+        getParams(ch);
+    });
+    
+    colAct.addEventListener("click", function(){
+        ch = 3;
+        makeAct(ch);
+        getParams(ch);
+    });
+}
 
-lineAct.addEventListener("click", function(){
-    ch = 1;
-    makeAct(ch);
-    getParams(ch);
-});
-
-areaAct.addEventListener("click", function(){
-    ch = 2;
-    makeAct(ch);
-    getParams(ch);
-});
-
-colAct.addEventListener("click", function(){
-    ch = 3;
-    makeAct(ch);
-    getParams(ch);
-});
 
 function searchSt(idi){
     for(var i = 0; i < statesInfo.length; i++){
@@ -260,18 +273,32 @@ var cb = document.querySelector("#states-cb");
 
 function getStates(){
     var dataList = [];
-    for(var i = 0; i < cb.length; i++){
-        if(cb[i].checked){
-            var stt = searchSt(cb[i].value);
-            dataList.push(stt);
+    if (cb) {
+        for(var i = 0; i < cb.length; i++){
+            if(cb[i].checked){
+                var stt = searchSt(cb[i].value);
+                dataList.push(stt);
+            }
         }
     }
     return dataList;
 }
 
-for(var i = 0; i < cb.length; i++){
-    cb[i].addEventListener("click", function() {
-        makeAct(ch);
-        getParams(ch);
-    });
+if (cb) {
+    for(var i = 0; i < cb.length; i++){
+        if (cb) {
+            cb[i].addEventListener("click", function() {
+                makeAct(ch);
+                getParams(ch);
+            });
+        }
+    }
 }
+
+$(document).ready(function() {
+    $('input[type="number"]').keypress(function(event) {
+        if ((!this.value.match(/([0-9]*[[.]|[,]])?[0-9]+/g))) {
+            event.preventDefault();
+        }
+    });
+});

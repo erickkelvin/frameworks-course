@@ -49,11 +49,11 @@ router.get('/edit/:id', function(req, res) {
 router.post('/create', function(req, res) {
   var result = state.create(req.body || {},
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });
@@ -61,11 +61,11 @@ router.post('/create', function(req, res) {
 router.post('/update/:id', function(req, res) {
   var result = state.update(req.params.id, req.body || {},
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });
@@ -73,11 +73,11 @@ router.post('/update/:id', function(req, res) {
 router.get('/delete/:id', function(req, res) {
   var result = state.delete(req.params.id,
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });

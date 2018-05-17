@@ -10,23 +10,23 @@
             <div class="content">
                 <div class="panel panel-default list-panel">
                     <div class="row title-row">
-                        <h4>Adicionar Estado</h4>
+                        <h4>Editar Estado</h4>
                     </div>
                     <div class="row new-table">
-                        <form action="create" method="post">
+                        <form action="/update/<%= data.id %>" method="post">
                             <table>
                                 <tbody>
                                     <tr>
                                         <th>Nome:</th>
-                                        <td><input type="text" name="name" value="<%= data.name %>" /></td>
+                                        <td><input type="text" name="name" value="<%= data.name %>" required /></td>
                                     </tr>
                                     <tr>
                                         <th>População:</th>
-                                        <td><input type="text" name="population" value="<%= data.population %>" /></td>
+                                        <td><input type="number" step="0.01" name="population" value="<%= data.population %>" required /></td>
                                     </tr>
                                     <tr>
                                         <th>PIB:</th>
-                                        <td><input type="text" name="pib" value="<%= data.pib %>" /></td>
+                                        <td><input type="number" step="0.01" name="pib" value="<%= data.pib %>" required /></td>
                                     </tr>
                                 </tbody>
                             </table>
