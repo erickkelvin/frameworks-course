@@ -1,0 +1,129 @@
+.list-panel {
+    padding: 15px 30px;
+    height: 100%;
+}
+
+.add-row {
+    padding: 15px 20px;
+    padding-bottom: 20px;
+}
+
+.add-row a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #393E41;
+    font-weight: bold;
+}
+
+.add-row span {
+    border-radius: 50%;
+    border: 2px solid #E94F37;
+    color: #E94F37;
+    padding: 3px;
+    padding-left: 3.5px;
+    padding-top: 3.2px;
+}
+
+.list-table {
+    padding: 10px 30px;
+}
+
+.list-table table td,
+.list-table table th {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.list-table table a {
+    text-decoration: none;
+    color: #393E41;
+}
+
+.list-table table span {
+    color: #E94F37;
+    border-radius: 50%;
+    border: 2px solid #E94F37;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 4px;
+}
+
+.list-table table .text-center {
+    width: 30%;
+}
+
+.title-row {
+    text-align: center;
+    font-weight: bold !important;
+    color: #E94F37;
+}
+
+.new-table {
+    padding: 15px;
+    text-align: center;
+}
+
+.new-table table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.new-table table th,
+.new-table table td {
+    height: 40px;
+}
+
+.new-table table th {
+    width: 45%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.new-table table td {
+    width: 55%;
+    text-align: left;
+}
+
+.new-table table td input{
+    width: 200px;
+    border: 1px solid #888888;
+    border-radius: 3px;
+    height: 25px;
+}
+
+.new-table .save-btn {
+    color: #393E41;
+    background-color: #98BFE1;
+    border: none;
+    padding: 10px 20px;
+}
+
+.new-table .save-btn:hover {
+    color: #393E41;
+    background-color: #9AD9D0;
+    border: none;
+    padding: 10px 20px;
+}
+
+.back-btn a {
+    text-decoration: none;
+    color: #E94F37;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.back-btn span {
+    border-radius: 50%;
+    border: 3px solid #E94F37;
+    padding-left: 2px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+}
+
+.show-table table th,
+.show-table table td {
+    width: 50%;
+    font-size: 16px;
+}

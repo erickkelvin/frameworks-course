@@ -1,0 +1,87 @@
+.content {
+    padding: 10px 20px;
+}
+
+.content .panel {
+    height: calc(100vh - 130px);
+    overflow-y: scroll;
+}
+
+.param-panel .panel .radio,
+.param-panel .panel .checkbox {
+    padding-left: 20px;
+}
+
+.graph-panel .panel .chart-row{
+    padding: 20px 30px;
+    margin: 0;
+}
+
+.chart-types{
+    margin: 0;
+}
+
+.chart-types .col-sm-3{
+    padding: 15px 0;
+    height: 50px;
+    text-align: center;
+}
+
+.chart-types .col-sm-3 {
+    cursor: pointer;
+}
+
+.chart-types .col-sm-3 label{
+    text-decoration: none;
+    color: #393E41;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.chart-types .col-sm-3.active {
+    border-bottom: 2px solid #E94F37;
+}
+
+.chart-types .col-sm-3:hover {
+    background-color: #FFDBD6;
+}
+
+.graph-div {
+    height: calc(100vh - 240px);
+}
+
+.arrow-div {
+    height: 50px;
+}
+
+.triangle-left {
+    float: right;
+    margin-top: 5px;
+	width: 0;
+    height: 0;
+	border-top: 20px solid transparent;
+	border-right: 10px solid #FCA395;
+	border-bottom: 20px solid transparent;
+}
+
+.triangle-right {
+    margin-top: 5px;
+	width: 0;
+    height: 0;
+	border-top: 20px solid transparent;
+	border-left: 10px solid #FCA395;
+	border-bottom: 20px solid transparent;
+}
+
+.triangle-left:hover,
+.triangle-right:hover {
+    cursor: pointer;
+}
+
+#param-rds {
+    padding-left: 20px;
+}
+
+#param-rds input {
+    margin: 10px 0;
+}

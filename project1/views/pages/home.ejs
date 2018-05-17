@@ -1,0 +1,72 @@
+<% include ../partials/header %>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a id="graphs" href="/">Gráficos</a></li>
+                            <li><a id="states" href="/list">Estados</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <script>
+                var statesInfo = JSON.parse(decodeURIComponent("<%= encodeURIComponent(JSON.stringify(data)) %>"));
+            </script>
+            
+            <div class="row content">
+                <div class="col-md-3 param-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <label class="param-titles">Parâmetros</label>
+                            <form id="param-rds">
+                                <input type="radio" name="param-radio" value="0" checked> Estado X População
+                                <br>
+                                <input type="radio" name="param-radio" value="1"> Estado X PIB
+                                <br>
+                                <input type="radio" name="param-radio" value="2"> Estado X PIB X População
+                            </form>
+                            <hr>
+                            <label class="param-titles">Estados</label>
+                            <form id="states-cb">
+                                <% for (var i in data) { %>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="<%= data[i].id %>" checked> <%= data[i].name %></label>
+                                    </div>
+                                <% } %>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 graph-panel">
+                    <div class="panel panel-default">
+                        <div class="row chart-types">
+                            <div class="col-sm-1 arrow-div">
+                                <div class="triangle-left"></div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div id="bar-label" class="col-sm-3 active">
+                                        <label>Barra</label>
+                                    </div>
+                                    <div id="line-label" class="col-sm-3">
+                                        <label>Linha</label>
+                                    </div>
+                                    <div id="area-label" class="col-sm-3">
+                                        <label>Área</label>
+                                    </div>
+                                    <div id="col-label" class="col-sm-3">
+                                        <label>Coluna</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 arrow-div">
+                                <div class="triangle-right"></div>
+                            </div>
+                        </div>
+                        <div class="row chart-row">
+                            <div class="panel-body graph-div">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+<% include ../partials/footer %>

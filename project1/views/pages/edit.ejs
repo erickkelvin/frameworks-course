@@ -1,18 +1,42 @@
 <% include ../partials/header %>
+                        <ul class="nav navbar-nav">
+                            <li><a id="graphs" href="/">Gráficos</a></li>
+                            <li class="active"><a id="states" href="/list">Estados</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-<div>
-  <form action="/update/<%= data.id %>" method="post">
-
-    Nome: <input type="text" name="name" value="<%= data.name %>" />
-    <br />
-    PIB: <input type="text" name="pib" value="<%= data.pib %>" />
-    <br />
-    Habitantes: <input type="text" name="population" value="<%= data.population %>" />
-    <br />
-    <input type="submit" value="Salvar" />
-  </form>
-</div>
-<br>
-<div><a href='/'>Ver todos</a></div>
+            <div class="content">
+                <div class="panel panel-default list-panel">
+                    <div class="row title-row">
+                        <h4>Editar Estado</h4>
+                    </div>
+                    <div class="row new-table">
+                        <form action="/update/<%= data.id %>" method="post">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Nome:</th>
+                                        <td><input type="text" name="name" value="<%= data.name %>" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <th>População:</th>
+                                        <td><input type="number" step="0.01" name="population" value="<%= data.population %>" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <th>PIB:</th>
+                                        <td><input type="number" step="0.01" name="pib" value="<%= data.pib %>" required /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="submit" value="Salvar" class="btn btn-default save-btn" />
+                        </form>
+                    </div>
+                    <div class="back-btn">
+                        <a href='/list' class="back-btn"><span class="glyphicon glyphicon-chevron-left"></span>Voltar</a>
+                    </div>
+                </div>
+            </div>
 
 <% include ../partials/footer %>

@@ -1,11 +1,39 @@
 <% include ../partials/header %>
+                        <ul class="nav navbar-nav">
+                            <li><a id="graphs" href="/">Gráficos</a></li>
+                            <li class="active"><a id="states" href="/list">Estados</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-<div>
-  <%= data.name %><br />
-  <%= data.pib %><br />
-  <%= data.population %><br />
-</div>
-<br>
-<div><a href='/'>Ver todos</a></div>
+            <div class="content">
+                <div class="panel panel-default list-panel">
+                    <div class="row title-row">
+                        <h4>Estado</h4>
+                    </div>
+                    <div class="row new-table show-table">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Nome:</th>
+                                        <td><%= data.name %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>População:</th>
+                                        <td><%= data.population %></td>
+                                    </tr>
+                                    <tr>
+                                        <th>PIB:</th>
+                                        <td><%= data.pib %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                    <div class="back-btn">
+                        <a href='/list' class="back-btn"><span class="glyphicon glyphicon-chevron-left"></span>Voltar</a>
+                    </div>
+                </div>
+            </div>
 
 <% include ../partials/footer %>

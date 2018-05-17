@@ -5,6 +5,16 @@ var state = require('../controllers/state_controller');
 router.get('/', function(req, res) {
   var result = state.list();
   result.then((doc) => {
+    res.render('pages/home', { title: 'Home', data: doc });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+
+router.get('/list', function(req, res) {
+  var result = state.list();
+  result.then((doc) => {
     res.render('pages/list', { title: 'PIB e População dos Estados Brasileiros', data: doc });
   })
   .catch((err) => {
@@ -39,11 +49,11 @@ router.get('/edit/:id', function(req, res) {
 router.post('/create', function(req, res) {
   var result = state.create(req.body || {},
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });
@@ -51,11 +61,11 @@ router.post('/create', function(req, res) {
 router.post('/update/:id', function(req, res) {
   var result = state.update(req.params.id, req.body || {},
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });
@@ -63,11 +73,11 @@ router.post('/update/:id', function(req, res) {
 router.get('/delete/:id', function(req, res) {
   var result = state.delete(req.params.id,
     () => {
-      res.redirect('/');
+      res.redirect('/list');
     },
     (err) => {
       console.log(err);
-      res.redirect('/');
+      res.redirect('/list');
     }
   );
 });
