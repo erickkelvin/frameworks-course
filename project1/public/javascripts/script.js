@@ -286,19 +286,9 @@ function getStates(){
 
 if (cb) {
     for(var i = 0; i < cb.length; i++){
-        if (cb) {
-            cb[i].addEventListener("click", function() {
-                makeAct(ch);
-                getParams(ch);
-            });
-        }
+        cb[i].addEventListener("click", function() {
+            makeAct(ch);
+            getParams(ch);
+        });
     }
 }
-
-$(document).ready(function() {
-    $('input[type="number"]').keypress(function(event) {
-        if ((!this.value.match(/([0-9]*[[.]|[,]])?[0-9]+/g))) {
-            event.preventDefault();
-        }
-    });
-});

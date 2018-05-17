@@ -40,20 +40,3 @@ exports.delete = (id, success, error) => {
     return err ? error(err) : success();
   });
 };
-
-exports.read_by_criteria = (filters) => {
-  var query = State.find();
-
-  for (var i = 0; i < filters.length; i++) {
-    query.where(filters[i].fieldName).equals(filters[i].value)
-  }
-  
-  var promise = query.exec();
-
-  return promise.then((result) => {
-    return result;
-  })
-  .catch((err) => {
-    return err;
-  });
-};
