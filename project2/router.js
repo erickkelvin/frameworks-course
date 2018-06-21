@@ -3,7 +3,7 @@ const fs = require('fs');
 const index_controller = require('./controllers/index_controller');
 const form_controller = require('./controllers/form_controller');
 
-exports.get = function(req, res) {  
+exports.get = function(req, res) {
   req.requrl = url.parse(req.url, true);
   const path = req.requrl.pathname;
 

@@ -1,18 +1,27 @@
 const mainTemplate = require('../views/template-main');
 const formTemplate = require('../views/template-form');
-const inputConfig = require('../model/test-data');
+const Config = require('../config.json');
 const { parse } = require('querystring');
+const db = require('../db/mongo').db;
 
 exports.get = (req, res, id) => {
-  const config = inputConfig.config;
+  const config = Config.collection;
 
   const pageTitle = (id ? 'Edit ' : 'Add new ') + config.name_single.toLowerCase();
 
   const titleLink = [`Show all ${config.name.toLowerCase()}`, '/'];
 
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write(mainTemplate.build(pageTitle, formTemplate.build(id, config.fields), titleLink));
-  res.end();
+  if(id) {
+    db.collection(config.name).findOne({id: id}).then(result => {
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.write(mainTemplate.build(pageTitle, formTemplate.build(id, config.fields, result), titleLink));
+      res.end();
+    });
+  } else {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(mainTemplate.build(pageTitle, formTemplate.build(id, config.fields), titleLink));
+    res.end();
+  }
 };
 
 exports.post = (req, res, id) => {
@@ -22,7 +31,30 @@ exports.post = (req, res, id) => {
   });
   req.on('end', () => {
       console.log(parse(body));
-      res.writeHead(301, { 'Location': '/' });
-      res.end();
+      
+      if(id) {
+        var newvalues = { $set: parse(body)};
+        db.collection('products').updateOne({id: id}, newvalues, (err, _) => {
+          if(err) console.log(err);
+          else {
+            console.log('product ' + id + ' updated!');
+            res.writeHead(301, { 'Location': '/' });
+            res.end();
+          }
+        })
+      } else {
+        db.collection('products').insertOne(parse(body), (err, _) => {
+          if(err) console.log(err);
+          else {
+            console.log('product created!');
+            res.writeHead(301, { 'Location': '/' });
+            res.end();
+          }
+        })
+      }
   });
 };
+
+exports.delete = (req, res, id) => {
+
+}
