@@ -4,9 +4,9 @@
   "description": "Second project for the Software Frameworks course at UFC.",
   "main": "server.js",
   "scripts": {
-    "pesrt": "mongod --dbpath data --fork --logpath /dev/null",
+    "prestart": "mongod --dbpath data --fork --logpath /dev/null",
     "start": "node server.js",
-    "pstst": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    "poststart": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",
