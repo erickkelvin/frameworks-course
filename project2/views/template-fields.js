@@ -2,7 +2,7 @@ const { capitalize } = require('../utils');
 
 exports.build = function(fieldsConfig, values) {
   let fields = "";
-
+  
   fieldsConfig.forEach(function(fieldConfig) {
     const newField = `
       <div class='form-field'>

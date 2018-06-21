@@ -9,16 +9,15 @@ exports.get = function(req, res) {
   db.collection(config.name).find({}).toArray((err, result) => {
     var listItens = '';
 
-    result.forEach(product => {
-      listItens += '<li>';
+    result.forEach(item => {
+      listItens += `<li><a href='/edit/${item['_id']}'>`;
       config.fields.forEach(field => {
-        listItens += product[field.label] + '\t|\t';
+        listItens += item[field.label] + '\t|\t';
       });
-      listItens += '</li>';
+      listItens += '</a></li>';
     });
   
     var list = '<ul>' + listItens + '</ul>';
-  
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write(mainTemplate.build(config.name, list, titleLink));
     res.end();
