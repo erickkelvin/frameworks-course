@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "mongod --dbpath data --fork --logpath /dev/null",
     "start": "node server.js",
-    "poststart": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    "stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",
