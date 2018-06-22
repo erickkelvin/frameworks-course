@@ -3,28 +3,29 @@
         "name": "mydb",
         "url": "mongodb://localhost:27017"
     },
-    "collection": {
+    "app": {
         "name": "products",
         "name_single": "product",
         "fields": [
-        {
-            "label": "name",
-            "type": "text",
-            "required": "true",
-            "maxlength": "30"
-        },
-        {
-            "label": "description",
-            "type": "text",
-            "required": "true",
-            "maxlength": "50"
-        },
-        {
-            "label": "price",
-            "type": "number",
-            "required": "true",
-            "maxlength": "30"
-        }
+            {
+                "label": "name",
+                "type": "text",
+                "required": "true",
+                "maxlength": "30"
+            },
+            {
+                "label": "description",
+                "type": "text",
+                "required": "true",
+                "maxlength": "50"
+            },
+            {
+                "label": "price",
+                "type": "number",
+                "required": "true",
+                "maxlength": "30",
+                "step": "0.01"
+            }
         ]
     }
 }

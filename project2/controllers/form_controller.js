@@ -1,25 +1,23 @@
 const mainTemplate = require('../views/template-main');
 const formTemplate = require('../views/template-form');
-const Config = require('../config.json');
+const { app } = require('../config.json');
 const { parse } = require('querystring');
-const db = require('../db/mongo').db;
+const { db } = require('../db/mongo');
 
 exports.get = (req, res, id) => {
-  const config = Config.collection;
-  const pageTitle = (id ? 'Edit ' : 'Add new ') + config.name_single.toLowerCase();
+  const pageTitle = (id ? 'Edit ' : 'Add new ') + app.name_single.toLowerCase();
+  const titleLink = [`&#xf022; Show all ${app.name.toLowerCase()}`, '/'];
 
-  const titleLink = [`Show all ${config.name.toLowerCase()}`, '/'];
-
-  if(id) {
+  if (id) {
     id = new require('mongodb').ObjectID(id);
-    db.collection(config.name).findOne({ '_id': id }).then(result => {
+    db.collection(app.name).findOne({ '_id': id }).then(result => {
       res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.write(mainTemplate.build(pageTitle, formTemplate.build(id, config.fields, result), titleLink));
+      res.write(mainTemplate.build(pageTitle, formTemplate.build(id, app.fields, result), titleLink));
       res.end();
     });
   } else {
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(mainTemplate.build(pageTitle, formTemplate.build(id, config.fields), titleLink));
+    res.write(mainTemplate.build(pageTitle, formTemplate.build(id, app.fields), titleLink));
     res.end();
   }
 };
@@ -33,7 +31,7 @@ exports.post = (req, res, id) => {
       if(id) {
         var newvalues = { $set: parse(body)};
         id = new require('mongodb').ObjectID(id);
-        db.collection('products').updateOne({ '_id': id }, newvalues, (err, _) => {
+        db.collection(app.name).updateOne({ '_id': id }, newvalues, (err, _) => {
           if(err) console.log(err);
           else {
             console.log('product ' + id + ' updated!');
@@ -42,7 +40,7 @@ exports.post = (req, res, id) => {
           }
         })
       } else {
-        db.collection('products').insertOne(parse(body), (err, _) => {
+        db.collection(app.name).insertOne(parse(body), (err, _) => {
           if(err) console.log(err);
           else {
             console.log('product created!');
@@ -57,7 +55,7 @@ exports.post = (req, res, id) => {
 exports.delete = (req, res, id) => {
   if(id) {
     id = new require('mongodb').ObjectID(id);
-    db.collection(config.name).deleteOne({ '_id': id}, (err, _) => {
+    db.collection(app.name).deleteOne({ '_id': id}, (err, _) => {
       if(err) console.log(err);
       else {
         console.log('product deleted!');

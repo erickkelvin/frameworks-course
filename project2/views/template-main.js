@@ -13,7 +13,7 @@ exports.build = function(title, content, link) {
       <body>
         <div class="title">
           <h1>${capitalize(title)}</h1>
-          ${link ? `(<a href='${link[1]}'>${link[0]}</a>)` : ''}
+          ${link ? `<a href='${link[1]}'>${link[0]}</a>` : ''}
         </div>
         <div id="content">
           ${content}

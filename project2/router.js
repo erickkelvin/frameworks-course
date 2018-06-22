@@ -31,7 +31,7 @@ exports.get = function(req, res) {
     else if (/(\/update\/.+)$/.test(path) && req.method === 'POST') {
       form_controller.post(req, res, /(\/update\/)(.+)$/.exec(path)[2]);
     }
-    else if (/(\/delete\/.+)$/.test(path) && req.method === 'POST') {
+    else if (/(\/delete\/.+)$/.test(path) && req.method === 'GET') {
       form_controller.delete(req, res, /(\/delete\/)(.+)$/.exec(path)[2]);
     }
     else {

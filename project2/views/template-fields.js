@@ -12,6 +12,7 @@ exports.build = function(fieldsConfig, values) {
           class='${fieldConfig.label}'
           type='${fieldConfig.type || 'text'}'
           ${fieldConfig.maxlength ? `maxlength='${fieldConfig.maxlength}'` : ''}
+          ${fieldConfig.step ? `step='${fieldConfig.step}'` : ''}
           ${fieldConfig.required ? 'required' : ''}
           value='${values ? values[`${fieldConfig.label}`] : ''}'
         >

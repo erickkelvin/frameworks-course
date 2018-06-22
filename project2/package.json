@@ -4,7 +4,7 @@
   "description": "Second project for the Software Frameworks course at UFC.",
   "main": "server.js",
   "scripts": {
-    "prestart": "mongod --dbpath data --fork --logpath /dev/null",
+    "prestart": "mongod --dbpath data --fork --logpath log/mongod.log",
     "start": "node server.js",
     "stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },

@@ -1,15 +1,13 @@
-var MongoClient = require('mongodb').MongoClient;
-const config = require('../config.json');
-const url = config.db.url;
-const dbName = config.db.name;
+const { MongoClient } = require('mongodb');
+const { db, app } = require('../config.json');
 
 exports.db = null;
 
 exports.connect = (callback) => {
     console.log('Initializing database connection...');
-    MongoClient.connect(url, (err, db) => {
+    MongoClient.connect(db.url, (err, db) => {
         if (err) callback(err);
-        exports.db = db.db(dbName);
+        exports.db = db.db(db.name);
         console.log('Database connected!');
 
         createDatabase();
@@ -18,9 +16,8 @@ exports.connect = (callback) => {
 };
 
 var createDatabase = () => {
-    var collection = config.collection;
-    exports.db.createCollection(collection.name, (err, res) => {
+    exports.db.createCollection(app.name, (err, res) => {
         if(err) throw err;
-        console.log('Collection ' + collection.name + ' created!');
+        console.log('Collection ' + app.name + ' created!');
     });
 }
