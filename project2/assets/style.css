@@ -1,7 +1,13 @@
 * { font-family: Font Awesome\ 5 Free; }
 
+@keyframes easein {
+  from { opacity:0; transform: translateY(-2%); }
+  to   { opacity:1; transform: translateY(0%); }
+}
+
 body {
   margin: 25px;
+  animation: .5s easein;
 }
 
 div.title {
@@ -16,6 +22,7 @@ div.title h1 {
 div.title a {
   height: 100%;
   margin-top: 38px;
+  margin-right: 20px;
   text-decoration: none;
   color: #0da881;
   transition: .2s ease;
@@ -24,6 +31,56 @@ div.title a {
 
 div.title a:hover {
   color: #0bc093;
+}
+
+/* List styles */
+
+table {
+  font-size: 15px;
+  transition: .5 ease;
+  min-width: 50%;
+}
+
+th {
+  background-color: #c5dfd8;
+  padding: 5px;
+}
+
+td {
+  padding: 5px;
+  background-color: #eff8f6;
+  min-width: 140px;
+}
+
+td:last-child {
+  text-align: center;
+  min-width: 85px;
+}
+
+th a {
+  text-decoration: none;
+  color: #000;
+}
+
+th a:hover {
+  text-decoration: underline;
+}
+
+a.action-list {
+  text-decoration: none;
+  color: #000;
+  transition: .2s ease;
+  font-size: 14px;
+  margin: 5px;
+}
+
+div.show-title {
+  font-weight: bold;
+}
+
+div.show-value {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /* Form styles */

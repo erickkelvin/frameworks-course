@@ -1,12 +1,12 @@
-const mainTemplate = require('../views/template-main');
-const formTemplate = require('../views/template-form');
+const mainTemplate = require('../views/main_template');
+const formTemplate = require('../views/form_template');
 const { app } = require('../config.json');
 const { parse } = require('querystring');
 const { db } = require('../db/mongo');
 
 exports.get = (req, res, id) => {
   const pageTitle = (id ? 'Edit ' : 'Add new ') + app.name_single.toLowerCase();
-  const titleLink = [`&#xf022; Show all ${app.name.toLowerCase()}`, '/'];
+  const titleLink = [{'value': `&#xf022; Show all ${app.name.toLowerCase()}`, 'href': '/'}];
 
   if (id) {
     id = new require('mongodb').ObjectID(id);

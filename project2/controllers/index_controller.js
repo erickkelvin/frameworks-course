@@ -1,24 +1,17 @@
-const mainTemplate = require('../views/template-main');
+const mainTemplate = require('../views/main_template');
+const listTemplate = require('../views/list_template');
 const { app } = require('../config.json');
 const { db } = require('../db/mongo');
 
-exports.get = function(req, res) {
-  const titleLink = [`&#xf0fe; Add new ${app.name_single.toLowerCase()}`, '/new'];
+exports.get = function(req, res, sort) {
+  const titleLink = [{'value': `&#xf0fe; Add new ${app.name_single.toLowerCase()}`, 'href': '/new'}];
 
-  db.collection(app.name).find({}).toArray((err, result) => {
-    var listItens = '';
+  const sortBy = `${sort ? sort.sortBy : '$natural'}`;
+  const order = parseInt(`${sort && sort.order ? sort.order : 1}`);
 
-    result.forEach(item => {
-      listItens += `<li><a href='/edit/${item['_id']}'>`;
-      app.fields.forEach(field => {
-        listItens += item[field.label] + '\t|\t';
-      });
-      listItens += '</a></li>';
-    });
-  
-    var list = '<ul>' + listItens + '</ul>';
+  db.collection(app.name).find().sort(sortBy, order).toArray((err, result) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(mainTemplate.build(app.name, list, titleLink));
+    res.write(mainTemplate.build(app.name, listTemplate.build(result, app.fields, sort), titleLink));
     res.end();
   })
 };

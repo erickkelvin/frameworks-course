@@ -1,4 +1,4 @@
-const template = require('../views/template-main');
+const template = require('../views/main_template');
 
 exports.get = function(req, res) {  
   res.writeHead(404, { 'Content-Type': 'text/html' });

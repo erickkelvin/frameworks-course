@@ -4,8 +4,8 @@
         "url": "mongodb://localhost:27017"
     },
     "app": {
-        "name": "products",
-        "name_single": "product",
+        "name": "cars",
+        "name_single": "car",
         "fields": [
             {
                 "label": "name",
@@ -21,7 +21,8 @@
             },
             {
                 "label": "price",
-                "type": "number",
+                "type": "money",
+                "currency": "$",
                 "required": "true",
                 "maxlength": "30",
                 "step": "0.01"

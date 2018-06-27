@@ -1,6 +1,11 @@
 const { capitalize } = require('../utils');
 
-exports.build = function(title, content, link) {
+exports.build = (title, content, links) => {
+  let linksOutput = '';
+  links.forEach(link => {
+    linksOutput += `<a href='${link.href}'>${link.value}</a>`;
+  });
+
   return `
     <!doctype html>
     <html lang="en">
@@ -13,7 +18,7 @@ exports.build = function(title, content, link) {
       <body>
         <div class="title">
           <h1>${capitalize(title)}</h1>
-          ${link ? `<a href='${link[1]}'>${link[0]}</a>` : ''}
+          ${linksOutput || ''}
         </div>
         <div id="content">
           ${content}

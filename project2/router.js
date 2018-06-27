@@ -2,10 +2,11 @@ const url = require('url');
 const fs = require('fs');
 const index_controller = require('./controllers/index_controller');
 const form_controller = require('./controllers/form_controller');
+const show_controller = require('./controllers/show_controller');
 
 exports.get = function(req, res) {
-  req.requrl = url.parse(req.url, true);
-  const path = req.requrl.pathname;
+  const url_parts = url.parse(req.url, true);
+  const path = url_parts.pathname;
 
   if (/.(css)$/.test(path)) {
     res.writeHead(200, { 'Content-Type': 'text/css' });
@@ -17,7 +18,15 @@ exports.get = function(req, res) {
     });
   } else {
     if (path === '/' && req.method === 'GET') {
-      index_controller.get(req, res);
+      if (url_parts.query) {
+        index_controller.get(req, res, url_parts.query);
+      } 
+      else {
+        index_controller.get(req, res);
+      }
+    }
+    else if (/(\/show\/.+)$/.test(path) && req.method === 'GET') {
+      show_controller.get(req, res, /(\/show\/)(.+)$/.exec(path)[2]);
     }
     else if (path === '/new' && req.method === 'GET') {
       form_controller.get(req, res);
