@@ -1,6 +1,6 @@
 # Project 2
 
-Second project for the Software Frameworks course at UFC.
+Second project for the Software Frameworks course at UFC: a CRUD framework for products. Developed by Erick Santos, Luiza Bomfim and Zedequias Santos.
 
 ## Setting up
 
@@ -25,6 +25,9 @@ Pre-requisites:
     mkdir log
     ```
     
+4. Use the `config.json` file to configure the app.
+
+    
 ## Running
 
 1. Start application in a separate terminal window or tab
@@ -37,7 +40,7 @@ Pre-requisites:
 
 ## Stopping and re-running
 
-1. After killing the server by pressing CTRL + C, terminate MongoDB server:
+1. If you need to kill/restart MongoDB server after killing the NodeJS server, run:
  
    ```bash
     npm stop
