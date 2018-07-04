@@ -2,9 +2,11 @@ const { capitalize } = require('../utils');
 
 exports.build = (title, content, links) => {
   let linksOutput = '';
-  links.forEach(link => {
-    linksOutput += `<a href='${link.href}'>${link.value}</a>`;
-  });
+  if (links) {
+    links.forEach(link => {
+      linksOutput += `<a href='${link.href}'>${link.value}</a>`;
+    });
+  }
 
   return `
     <!doctype html>
